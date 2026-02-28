@@ -43,6 +43,9 @@ export const env = {
   TWILIO_ACCOUNT_SID: process.env.TWILIO_ACCOUNT_SID,
   TWILIO_AUTH_TOKEN: process.env.TWILIO_AUTH_TOKEN,
   TWILIO_FROM_PHONE: process.env.TWILIO_FROM_PHONE,
+  SMSO_API_KEY: process.env.SMSO_API_KEY,
+  SMSO_SENDER: process.env.SMSO_SENDER,
+  SMSO_BASE_URL: process.env.SMSO_BASE_URL ?? 'https://app.smso.ro/api/v1',
 
   SMTP_HOST: process.env.SMTP_HOST,
   SMTP_PORT: optionalNumber('SMTP_PORT', 587),
