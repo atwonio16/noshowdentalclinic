@@ -2,6 +2,7 @@ import type { NextFunction, Request, Response } from 'express';
 import { Router } from 'express';
 import multer from 'multer';
 import { DateTime } from 'luxon';
+import { env } from '../config/env';
 import { createSupabaseAuthClient } from '../db/supabase';
 import { clearSessionCookies, setSessionCookies } from '../auth/session';
 import { getManagerUserByAuthId } from '../db/users';
@@ -22,6 +23,7 @@ import { importCsvSnapshot } from './csvImportService';
 import { findTokenWithAppointment, markAllTokensUsedForAppointment } from '../db/tokens';
 import { validateTokenRecord } from '../utils/tokenValidation';
 import { notifyClinicForPatientCancellation, sendConfirmedAckIfEnabled } from '../jobs/confirmorJobs';
+import { runSchedulerTick } from '../jobs/scheduler';
 
 const upload = multer({
   storage: multer.memoryStorage(),
@@ -150,6 +152,24 @@ export function buildRouter(): Router {
 
   router.get('/health', (_req, res) => {
     res.status(200).json({ ok: true });
+  });
+
+  router.get('/api/cron/tick', async (req, res, next) => {
+    try {
+      if (env.CRON_SECRET) {
+        const authHeader = req.header('authorization') ?? '';
+        const expected = `Bearer ${env.CRON_SECRET}`;
+        if (authHeader !== expected) {
+          res.status(401).json({ error: 'Unauthorized' });
+          return;
+        }
+      }
+
+      await runSchedulerTick();
+      res.status(200).json({ ok: true });
+    } catch (error) {
+      next(error);
+    }
   });
 
   router.get('/login', (req, res) => {

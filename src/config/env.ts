@@ -46,6 +46,7 @@ export const env = {
   SMSO_API_KEY: process.env.SMSO_API_KEY,
   SMSO_SENDER: process.env.SMSO_SENDER,
   SMSO_BASE_URL: process.env.SMSO_BASE_URL ?? 'https://app.smso.ro/api/v1',
+  CRON_SECRET: process.env.CRON_SECRET,
 
   SMTP_HOST: process.env.SMTP_HOST,
   SMTP_PORT: optionalNumber('SMTP_PORT', 587),
