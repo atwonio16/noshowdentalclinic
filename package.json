@@ -1,0 +1,41 @@
+{
+  "name": "confirmor",
+  "version": "0.1.0",
+  "description": "Confirmor MVP - anti no-show rules engine for dental clinics",
+  "private": true,
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.50.2",
+    "cookie-parser": "^1.4.7",
+    "csv-parse": "^5.6.0",
+    "csurf": "^1.11.0",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "luxon": "^3.7.2",
+    "multer": "^1.4.5-lts.2",
+    "node-cron": "^4.2.1",
+    "nodemailer": "^7.0.10",
+    "twilio": "^5.10.6"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.9",
+    "@types/csurf": "^1.11.5",
+    "@types/express": "^4.17.23",
+    "@types/luxon": "^3.7.1",
+    "@types/multer": "^1.4.13",
+    "@types/node": "^24.5.2",
+    "@types/nodemailer": "^7.0.3",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  }
+}

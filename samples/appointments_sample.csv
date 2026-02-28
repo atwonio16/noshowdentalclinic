@@ -1,0 +1,4 @@
+appointment_id,start_datetime,phone,appointment_type,patient_name,provider_name,status
+A-1001,2026-03-01T10:30:00+02:00,0712345678,Control periodic,Ionescu Ana,Dr. Popescu,pending
+A-1002,2026-03-01T12:00:00+02:00,+40741111222,Detartraj,Marin Radu,Dr. Ionescu,pending
+A-1003,2026-02-28T09:00:00+02:00,0745999888,Consultatie,Pop Alina,Dr. Rusu,pending
